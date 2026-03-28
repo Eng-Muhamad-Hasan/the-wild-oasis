@@ -1,17 +1,27 @@
-import { lazy, Suspense } from "react";
+// import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import GlobalStyles from "./styles/GlobalStyles";
 
-const Dashboard = lazy(() => import("./pages/Dashboard"));
-const Bookings = lazy(() => import("./pages/Bookings"));
-const Cabins = lazy(() => import("./pages/Cabins"));
-const Users = lazy(() => import("./pages/Users"));
-const Settings = lazy(() => import("./pages/Settings"));
-const Account = lazy(() => import("./pages/Account"));
-const Login = lazy(() => import("./pages/Login"));
-const PageNotFound = lazy(() => import("./pages/PageNotFound"));
-const Checkin = lazy(() => import("./pages/Checkin"));
+// const Dashboard = lazy(() => import("./pages/Dashboard"));
+// const Bookings = lazy(() => import("./pages/Bookings"));
+// const Cabins = lazy(() => import("./pages/Cabins"));
+// const Users = lazy(() => import("./pages/Users"));
+// const Settings = lazy(() => import("./pages/Settings"));
+// const Account = lazy(() => import("./pages/Account"));
+// const Login = lazy(() => import("./pages/Login"));
+// const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+// const Checkin = lazy(() => import("./pages/Checkin"));
+import Dashboard from "./pages/Dashboard";
+import Bookings from "./pages/Bookings";
+import Cabins from "./pages/Cabins";
+import Users from "./pages/Users";
+import Settings from "./pages/Settings";
+import Account from "./pages/Account";
+import Login from "./pages/Login";
+import PageNotFound from "./pages/PageNotFound";
+import Checkin from "./pages/Checkin";
+
 
 import AppLayout from "./ui/AppLayout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -20,7 +30,6 @@ import { Toaster } from "react-hot-toast";
 import Booking from "./features/bookings/Booking";
 import ProtectedRoute from "./ProtectedRoute";
 import { DarkModeProvider } from "./providers/DarkModeProvider";
-import Spinner from "./ui/Spinner";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,7 +50,6 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
         <GlobalStyles />
         <BrowserRouter>
-          <Suspense fallback={<Spinner />}>
             <Routes>
               <Route
                 element={
@@ -63,7 +71,6 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
-          </Suspense>
         </BrowserRouter>
         <Toaster
           position="top-center"
